@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled, { createGlobalStyle } from 'styled-components';
+
+import Scroller from './components/Scroller';
+
+const GlobalStyle = createGlobalStyle`
+  .animate-slide {
+    transition: all .3s ease-out;
+  }
+`;
+
+const AppContainers = styled.div`
+  background-color: #fff;
+  width: 768px;
+  height: 100vh;
+  margin: auto;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainers>
+      <GlobalStyle />
+      <Scroller images={[
+        'https://picsum.photos/800/1000',
+        'https://picsum.photos/1000/1000',
+        'https://picsum.photos/1000/800',
+      ]} />
+    </AppContainers>
   );
 }
 
